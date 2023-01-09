@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  }
   return (
-    <div className='dark-mode'>
+    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
       <div className="app">
         <div className="level">
           <div>
@@ -13,8 +18,9 @@ function App() {
           </div>
 
           {/* --The button that should toggle dark mode-- */}
-          <button className="app__dark-mode-btn icon level-right" >
-            <FontAwesomeIcon icon={faSun} />
+          <button className="app__dark-mode-btn icon level-right" onClick={toggleDarkMode}>
+
+            <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
           </button>
 
         </div>
